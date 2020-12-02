@@ -4,7 +4,7 @@ const compiledFactory = require('./build/CampaignFactory.json');
 
 const provider = new HDWalletProvider(
 	'mention party butter stadium scissors obscure cave service fine hobby trap organ',
-	'https://rinkeby.infura.io/v3/66fbccb2856b40b3a622d925568379e9'
+	'http://iebilab.nctu.edu.tw:8545'
 );
 
 const web3 = new Web3(provider);

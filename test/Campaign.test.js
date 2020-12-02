@@ -49,7 +49,7 @@ describe('Campaigns', () => {
 	});
 	it('requires a minimum contribution', async () => {
 		try {
-			await campaign.methods.contribute.send({
+			await campaign.methods.contribute().send({
 				value: '5',
 				from: accounts[1]
 			});
@@ -69,7 +69,7 @@ describe('Campaigns', () => {
 		assert.equal("Buy batteries", request.description);
 	});
 	it('processes requests', async () => {
-		await campaign.methods.contribute.send({
+		await campaign.methods.contribute().send({
 			from: accounts[0],
 			value: web3.utils.toWei('10', 'ether')
 		});
@@ -77,7 +77,7 @@ describe('Campaigns', () => {
 		await campaign.methods.createRequest('A', web3.utils.toWei('5', 'ether'), accounts[1])
 			.send({
 				from: accounts[0],
-				gas: '10000000'
+				gas: '1000000'
 			});
 		await campaign.methods.approveRequest(0)
 			.send({
@@ -93,7 +93,7 @@ describe('Campaigns', () => {
 		let balance = await web3.eth.getBalance(accounts[1]);
 		balance = web3.utils.fromWei(balance, 'ether');
 		balance = parseFloat(balance);
-		
+		console.log(balance);
 		assert(balance > 104);
 	});
 });
